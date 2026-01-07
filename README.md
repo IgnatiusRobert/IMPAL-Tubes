@@ -3,7 +3,10 @@
 ![PHP Badge](https://img.shields.io/badge/Language-PHP-blue?style=for-the-badge&logo=php)
 ![MySQL Badge](https://img.shields.io/badge/Database-MySQL-orange?style=for-the-badge&logo=mysql)
 
-**MyKisah** adalah aplikasi web sederhana untuk pemesanan tiket bioskop yang dibangun menggunakan **PHP Native** (tanpa framework) dan **MySQL**. Proyek ini mencakup fitur untuk pengguna (pemesanan tiket) dan panel admin untuk manajemen film dan jadwal.
+**MyKisah** adalah project **sistem pemesanan tiket bioskop berbasis web** yang berjalan **secara lokal (static local project)**.  
+Project ini dibuat sebagai **tugas kuliah** dan dikembangkan menggunakan **PHP murni tanpa framework** serta **database MySQL**.
+
+Aplikasi ini memiliki **dua peran utama**, yaitu **Admin** dan **User**, dengan fokus utama pada pengelolaan data dan proses pemesanan tiket.
 
 Link Video Demo Progress Tubes - Responsi 2: https://youtu.be/8hDpreTAkj4
 
