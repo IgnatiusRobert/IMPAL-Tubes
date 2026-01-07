@@ -212,7 +212,10 @@ if (isset($_GET['view'])) {
         }
         .sidebar.open { width: 240px; padding-left: 0; padding-right: 0; }
         
-        .menu { margin-top: 12px; width: 100%; }
+        .menu { 
+            margin-top: 12px; 
+            width: 100%; 
+        }
         
         .menu-item { 
             display: flex; align-items: center; gap: 14px; padding: 12px; color: var(--dark); 
@@ -229,10 +232,26 @@ if (isset($_GET['view'])) {
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
-        .menu-item svg { width: 26px; height: 26px; flex-shrink: 0; display: block; }
-        .menu-item .label { display: none; font-weight: 500; font-size: 15px; }
-        .sidebar.open .menu-item .label { display: inline-block; }
-        .sidebar:not(.open) .menu-item { justify-content: center; padding-left: 0; padding-right: 0; }
+        .menu-item svg { 
+            width: 26px;
+            height: 26px;
+            flex-shrink: 0; 
+            display: block; 
+        }
+        .menu-item .label { 
+            display: none;
+            font-weight: 500; 
+            font-size: 15px; 
+        }
+        .sidebar.open .menu-item .label { 
+            display: inline-block; 
+        }
+
+        .sidebar:not(.open) .menu-item { 
+            justify-content: center; 
+            padding-left: 0; 
+            padding-right: 0; 
+        }
         .sidebar-panel {
             position: absolute; left: 0; top: 0; width: 100%; height: 100%; 
             background: linear-gradient(180deg, rgba(206,243,248,1) 0%, rgba(206,243,248,1) 100%);
@@ -240,27 +259,55 @@ if (isset($_GET['view'])) {
         }
 
         /* 2. MAIN CONTENT (Modern Style) */
-        .content { flex: 1; padding: 20px 28px; position: relative; z-index: 1; overflow-x: auto; }
-        .page-title { font-size: 28px; font-weight: 600; margin: 6px 0 18px 0; color: var(--dark); }
-
-        .card { 
-            background: #fff; border-radius: 16px; box-shadow: var(--shadow); 
-            border: 1px solid #e2e8f0; margin-bottom: 24px; overflow: hidden; 
+        .content { 
+            flex: 1; 
+            padding: 20px 28px; 
+            position: relative; 
+            z-index: 1; 
+            overflow-x: auto; 
         }
 
-        /* Stats Row Modern */
+        .page-title { 
+            font-size: 28px; 
+            font-weight: 600; 
+            margin: 6px 0 18px 0; 
+            color: var(--dark);
+        }
+
+        .card { 
+            background: #fff; 
+            border-radius: 16px; 
+            box-shadow: var(--shadow); 
+            border: 1px solid #e2e8f0; 
+            margin-bottom: 24px; 
+            overflow: hidden; 
+        }
+
         .stats-row {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 24px;
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px; 
+            margin-bottom: 24px;
         }
         .stat-box {
             background: #fff; padding: 20px; border-radius: 16px;
             box-shadow: var(--shadow); border: 1px solid #e2e8f0;
             display: flex; flex-direction: column; align-items: flex-start;
         }
-        .stat-value { font-size: 32px; font-weight: 700; color: #0f172a; line-height: 1.2; }
-        .stat-label { font-size: 14px; color: #64748b; font-weight: 500; margin-top: 4px; }
+        .stat-value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: #0f172a; 
+            line-height: 1.2; 
+        }
+        
+        .stat-label { 
+            font-size: 14px; 
+            color: #64748b; 
+            font-weight: 500; 
+            margin-top: 4px; 
+        }
 
-        /* Filter Bar (Modern 1 Line) */
         .filter-bar {
             background: #f8fafc; padding: 16px 24px; border-bottom: 1px solid #e2e8f0;
             display: flex; align-items: center; gap: 12px;

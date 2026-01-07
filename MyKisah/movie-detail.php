@@ -454,7 +454,7 @@ $theaters = $theater_stmt->get_result();
 <body>
     <!-- Header -->
     <header>
-        <a href="index.php" class="logo">MyKisah.</a>
+        <a href="index.php" class="logo">MyKisah</a>
         <nav>
             <a href="index.php">Home</a>
             <?php if (isLoggedIn()): ?>

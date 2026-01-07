@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2025 at 09:36 AM
+-- Generation Time: Jan 06, 2026 at 08:26 AM
 -- Server version: 8.0.41
 -- PHP Version: 8.2.12
 
@@ -37,7 +37,7 @@ CREATE TABLE `bookings` (
   `payment_method` enum('cash','credit_card','debit_card','e-wallet') NOT NULL,
   `payment_status` enum('pending','paid','cancelled') DEFAULT 'pending',
   `booking_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `bookings`
@@ -49,12 +49,28 @@ INSERT INTO `bookings` (`booking_id`, `user_id`, `schedule_id`, `booking_code`, 
 (8, 5, 581, 'BK202511214A6EA4', 2, 120000.00, 'credit_card', 'paid', '2025-11-21 11:13:05'),
 (9, 6, 581, 'BK20251121E9AAC0', 2, 120000.00, 'e-wallet', 'paid', '2025-11-21 11:23:37'),
 (10, 6, 581, 'BK20251121AA3538', 1, 60000.00, 'debit_card', 'paid', '2025-11-21 11:26:54'),
-(11, 1, 582, 'BK20251121853B58', 4, 2800000.00, 'e-wallet', 'paid', '2025-11-21 11:33:01'),
+(11, 1, 582, 'BK20251121853B58', 4, 2800000.00, 'e-wallet', 'cancelled', '2025-11-21 11:33:01'),
 (12, 1, 581, 'BK202511217F0249', 9, 540000.00, 'cash', 'paid', '2025-11-21 11:38:21'),
 (13, 1, 581, 'BK202511210ADF17', 3, 180000.00, 'debit_card', 'paid', '2025-11-21 11:47:04'),
 (14, 7, 581, 'BK2025112154575E', 74, 4440000.00, 'cash', 'cancelled', '2025-11-21 14:54:01'),
 (15, 7, 581, 'BK2025112199FED6', 1, 60000.00, 'cash', 'paid', '2025-11-21 14:58:42'),
-(16, 5, 583, 'BK20251123D047E1', 21, 1680000.00, 'e-wallet', 'paid', '2025-11-23 08:33:01');
+(16, 5, 583, 'BK20251123D047E1', 21, 1680000.00, 'e-wallet', 'paid', '2025-11-23 08:33:01'),
+(17, 1, 584, 'BK20251126619E38', 13, 13000000.00, 'debit_card', 'paid', '2025-11-26 12:48:25'),
+(18, 1, 583, 'BK20251129A5A507', 3, 240000.00, 'cash', 'paid', '2025-11-28 23:40:02'),
+(19, 1, 583, 'BK202511298EEBEA', 2, 160000.00, 'e-wallet', 'paid', '2025-11-28 23:42:06'),
+(20, 1, 583, 'BK2025112958E140', 3, 240000.00, 'debit_card', 'paid', '2025-11-28 23:44:23'),
+(21, 1, 583, 'BK20251129ABCCFD', 3, 240000.00, 'cash', 'paid', '2025-11-28 23:57:40'),
+(22, 8, 583, 'BK202511297C9C6A', 8, 640000.00, 'cash', 'paid', '2025-11-29 00:05:59'),
+(23, 8, 583, 'BK20251129F9367A', 24, 1920000.00, 'e-wallet', 'paid', '2025-11-29 00:07:58'),
+(24, 1, 583, 'BK20251129C7AECD', 12, 960000.00, 'cash', 'paid', '2025-11-29 11:52:35'),
+(25, 6, 583, 'BK202511291732FE', 2, 160000.00, 'e-wallet', 'paid', '2025-11-29 11:56:47'),
+(26, 9, 583, 'BK202511295D385F', 3, 240000.00, 'debit_card', 'paid', '2025-11-29 12:18:33'),
+(27, 1, 583, 'BK202511290137CE', 2, 160000.00, 'cash', 'paid', '2025-11-29 12:22:28'),
+(28, 1, 583, 'BK202511295FCBCC', 2, 160000.00, 'credit_card', 'paid', '2025-11-29 12:24:23'),
+(29, 1, 587, 'BK20251129BBCE44', 7, 840000.00, 'cash', 'paid', '2025-11-29 12:50:05'),
+(31, 10, 589, 'BK202601046916C8', 7, 350000.00, 'cash', 'cancelled', '2026-01-04 16:08:40'),
+(33, 10, 589, 'BK20260104D108DB', 4, 200000.00, 'cash', 'cancelled', '2026-01-04 16:22:16'),
+(34, 1, 591, 'BK20260104A65C0A', 8, 5600000.00, 'debit_card', 'paid', '2026-01-04 16:26:34');
 
 -- --------------------------------------------------------
 
@@ -67,7 +83,7 @@ CREATE TABLE `booking_seats` (
   `booking_id` int NOT NULL,
   `seat_id` int NOT NULL,
   `status` enum('reserved','confirmed','cancelled') DEFAULT 'reserved'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `booking_seats`
@@ -85,10 +101,10 @@ INSERT INTO `booking_seats` (`booking_seat_id`, `booking_id`, `seat_id`, `status
 (24, 9, 301, 'confirmed'),
 (25, 9, 307, 'confirmed'),
 (26, 10, 328, 'confirmed'),
-(27, 11, 349, 'confirmed'),
-(28, 11, 330, 'confirmed'),
-(29, 11, 319, 'confirmed'),
-(30, 11, 299, 'confirmed'),
+(27, 11, 349, 'cancelled'),
+(28, 11, 330, 'cancelled'),
+(29, 11, 319, 'cancelled'),
+(30, 11, 299, 'cancelled'),
 (31, 12, 270, 'confirmed'),
 (32, 12, 259, 'confirmed'),
 (33, 12, 281, 'confirmed'),
@@ -196,7 +212,110 @@ INSERT INTO `booking_seats` (`booking_seat_id`, `booking_id`, `seat_id`, `status
 (135, 16, 461, 'confirmed'),
 (136, 16, 460, 'confirmed'),
 (137, 16, 463, 'confirmed'),
-(138, 16, 462, 'confirmed');
+(138, 16, 462, 'confirmed'),
+(139, 17, 862, 'confirmed'),
+(140, 17, 863, 'confirmed'),
+(141, 17, 864, 'confirmed'),
+(142, 17, 869, 'confirmed'),
+(143, 17, 870, 'confirmed'),
+(144, 17, 871, 'confirmed'),
+(145, 17, 872, 'confirmed'),
+(146, 17, 873, 'confirmed'),
+(147, 17, 874, 'confirmed'),
+(148, 17, 875, 'confirmed'),
+(149, 17, 876, 'confirmed'),
+(150, 17, 877, 'confirmed'),
+(151, 17, 878, 'confirmed'),
+(152, 18, 464, 'confirmed'),
+(153, 18, 465, 'confirmed'),
+(154, 18, 466, 'confirmed'),
+(155, 19, 449, 'confirmed'),
+(156, 19, 450, 'confirmed'),
+(157, 20, 410, 'confirmed'),
+(158, 20, 411, 'confirmed'),
+(159, 20, 412, 'confirmed'),
+(160, 21, 451, 'confirmed'),
+(161, 21, 452, 'confirmed'),
+(162, 21, 453, 'confirmed'),
+(163, 22, 431, 'confirmed'),
+(164, 22, 432, 'confirmed'),
+(165, 22, 443, 'confirmed'),
+(166, 22, 444, 'confirmed'),
+(167, 22, 445, 'confirmed'),
+(168, 22, 446, 'confirmed'),
+(169, 22, 447, 'confirmed'),
+(170, 22, 448, 'confirmed'),
+(171, 23, 359, 'confirmed'),
+(172, 23, 360, 'confirmed'),
+(173, 23, 361, 'confirmed'),
+(174, 23, 362, 'confirmed'),
+(175, 23, 363, 'confirmed'),
+(176, 23, 364, 'confirmed'),
+(177, 23, 365, 'confirmed'),
+(178, 23, 366, 'confirmed'),
+(179, 23, 367, 'confirmed'),
+(180, 23, 368, 'confirmed'),
+(181, 23, 369, 'confirmed'),
+(182, 23, 370, 'confirmed'),
+(183, 23, 371, 'confirmed'),
+(184, 23, 372, 'confirmed'),
+(185, 23, 373, 'confirmed'),
+(186, 23, 374, 'confirmed'),
+(187, 23, 375, 'confirmed'),
+(188, 23, 376, 'confirmed'),
+(189, 23, 377, 'confirmed'),
+(190, 23, 378, 'confirmed'),
+(191, 23, 379, 'confirmed'),
+(192, 23, 380, 'confirmed'),
+(193, 23, 381, 'confirmed'),
+(194, 23, 382, 'confirmed'),
+(195, 24, 383, 'confirmed'),
+(196, 24, 384, 'confirmed'),
+(197, 24, 385, 'confirmed'),
+(198, 24, 386, 'confirmed'),
+(199, 24, 387, 'confirmed'),
+(200, 24, 388, 'confirmed'),
+(201, 24, 389, 'confirmed'),
+(202, 24, 390, 'confirmed'),
+(203, 24, 391, 'confirmed'),
+(204, 24, 392, 'confirmed'),
+(205, 24, 393, 'confirmed'),
+(206, 24, 394, 'confirmed'),
+(207, 25, 395, 'confirmed'),
+(208, 25, 406, 'confirmed'),
+(209, 26, 400, 'confirmed'),
+(210, 26, 401, 'confirmed'),
+(211, 26, 402, 'confirmed'),
+(212, 27, 439, 'confirmed'),
+(213, 27, 440, 'confirmed'),
+(214, 28, 433, 'confirmed'),
+(215, 28, 434, 'confirmed'),
+(216, 29, 563, 'confirmed'),
+(217, 29, 564, 'confirmed'),
+(218, 29, 574, 'confirmed'),
+(219, 29, 575, 'confirmed'),
+(220, 29, 576, 'confirmed'),
+(221, 29, 577, 'confirmed'),
+(222, 29, 578, 'confirmed'),
+(227, 31, 131, 'cancelled'),
+(228, 31, 139, 'cancelled'),
+(229, 31, 147, 'cancelled'),
+(230, 31, 155, 'cancelled'),
+(231, 31, 163, 'cancelled'),
+(232, 31, 154, 'cancelled'),
+(233, 31, 162, 'cancelled'),
+(237, 33, 131, 'cancelled'),
+(238, 33, 139, 'cancelled'),
+(239, 33, 154, 'cancelled'),
+(240, 33, 161, 'cancelled'),
+(241, 34, 651, 'confirmed'),
+(242, 34, 652, 'confirmed'),
+(243, 34, 653, 'confirmed'),
+(244, 34, 654, 'confirmed'),
+(245, 34, 655, 'confirmed'),
+(246, 34, 656, 'confirmed'),
+(247, 34, 657, 'confirmed'),
+(248, 34, 658, 'confirmed');
 
 -- --------------------------------------------------------
 
@@ -211,7 +330,7 @@ CREATE TABLE `halls` (
   `total_seats` int NOT NULL,
   `seat_layout` text,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `halls`
@@ -241,32 +360,35 @@ CREATE TABLE `movies` (
   `genre` varchar(100) DEFAULT NULL,
   `rating` varchar(10) DEFAULT NULL,
   `poster_url` varchar(255) DEFAULT NULL,
+  `trailer_url` varchar(255) DEFAULT NULL,
   `release_date` date DEFAULT NULL,
   `status` enum('now_playing','coming_soon','archived') DEFAULT 'now_playing',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `movies`
 --
 
-INSERT INTO `movies` (`movie_id`, `title`, `description`, `duration`, `genre`, `rating`, `poster_url`, `release_date`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Chainsaw Man - The Movie: Reze Arc', 'Denji dan Power menghadapi musuh baru yang berbahaya dalam arc Reze yang penuh aksi dan drama.', 115, 'Action, Anime', 'R', 'images/poster_csm.jpg', '2025-10-15', 'now_playing', '2025-10-29 12:45:59', '2025-10-29 13:43:40'),
-(2, 'The Verdict', 'Seorang pengacara muda berjuang untuk mengungkap kebenaran di balik kasus pembunuhan yang rumit.', 130, 'Drama, Thriller', 'PG-13', 'images/poster_keadilan.jpg', '2025-11-05', 'coming_soon', '2025-10-29 12:45:59', '2025-10-29 14:05:37'),
-(3, 'Dune: Part Three', 'Petualangan epik Paul Atreides berlanjut dalam chapter final yang spektakuler.', 165, 'Sci-Fi, Adventure', 'PG-13', 'images/poster_dune.jpg', '2025-10-20', 'now_playing', '2025-10-29 12:45:59', '2025-10-29 15:25:17'),
-(4, 'The Last Guardian', 'Sebuah keluarga harus bertahan hidup saat dunia dilanda bencana apokaliptik.', 140, 'Action, Drama', 'R', 'images/poster_guardian.jpg', '2025-11-12', 'coming_soon', '2025-10-29 12:45:59', '2025-11-23 07:58:56'),
-(5, 'Jujutsu Kaisen 0', 'Yuta Okkotsu bergabung dengan Tokyo Jujutsu High untuk mengendalikan roh kutukan Rika.', 112, 'Action, Fantasy', 'PG-13', 'images/poster_jjk0.jpg', '2022-01-10', 'now_playing', '2025-10-29 14:08:47', '2025-10-29 14:08:47'),
-(6, 'Your Name', 'Dua remaja saling bertukar tubuh dan terhubung oleh nasib.', 106, 'Romance, Drama', 'PG', 'images/poster_yourname.jpg', '2016-08-26', 'coming_soon', '2025-10-29 14:08:47', '2025-10-29 15:32:51'),
-(7, 'Suzume', 'Gadis SMA yang membantu menutup pintu antar dunia agar bencana tidak terjadi.', 121, 'Adventure, Fantasy', 'PG', 'images/poster_suzume.jpg', '2023-04-15', 'coming_soon', '2025-10-29 14:08:47', '2025-10-29 14:08:47'),
-(8, 'Demon Slayer: Mugen Train', 'Tanjiro dan teman-temannya menghadapi iblis kuat di dalam kereta misterius.', 117, 'Action, Fantasy', 'R', 'images/poster_kny_mugen.jpg', '2020-10-16', 'archived', '2025-10-29 14:08:47', '2025-10-29 14:08:47'),
-(9, 'One Piece Film: Red', 'Luffy dan kru Topi Jerami bertemu diva legendaris, Uta.', 115, 'Action, Adventure', 'PG', 'images/poster_op_red.jpg', '2022-08-06', 'now_playing', '2025-10-29 14:08:47', '2025-10-29 14:08:47'),
-(10, 'Weathering With You', 'Seorang anak laki-laki bertemu gadis yang dapat mengubah cuaca.', 112, 'Fantasy, Romance', 'PG', 'images/poster_weathering.jpg', '2019-07-19', 'coming_soon', '2025-10-29 14:08:47', '2025-10-29 15:45:13'),
-(11, 'Blue Lock - Episode Nagi', 'Nagi Seishiro berusaha mengungkap potensi terbesarnya dalam program Blue Lock.', 91, 'Sports, Drama', 'PG-13', 'images/poster_bl_nagi.jpg', '2024-06-01', 'coming_soon', '2025-10-29 14:08:47', '2025-10-29 14:08:47'),
-(12, 'The First Slam Dunk', 'Tim Shohoku berjuang dalam pertandingan penentuan melawan Sannoh.', 124, 'Sports, Drama', 'PG', 'images/poster_slamdunk.jpg', '2022-12-03', 'now_playing', '2025-10-29 14:08:47', '2025-10-29 14:08:47'),
-(13, 'Haikyuu!! The Dumpster Battle', 'Karasuno vs Nekoma dalam pertandingan yang sangat menentukan.', 95, 'Sports', 'PG', 'images/poster_haikyuu.jpg', '2024-02-16', 'now_playing', '2025-10-29 14:08:47', '2025-10-29 14:08:47'),
-(14, 'Spirited Away', 'Seorang gadis terjebak di dunia roh dan harus menemukan jalan pulang.', 125, 'Fantasy, Adventure', 'PG', 'images/poster_spiritedaway.jpg', '2001-07-20', 'archived', '2025-10-29 14:08:47', '2025-10-29 14:08:47'),
-(15, 'Perjalanan Rendi', 'Perjalanan rendi dari publik jadi EVOS Rendy', 164, 'Drama, Comedy', 'R', 'images/IMG_0215.jpg', '2025-11-28', 'archived', '2025-11-21 11:28:40', '2025-11-21 12:21:07');
+INSERT INTO `movies` (`movie_id`, `title`, `description`, `duration`, `genre`, `rating`, `poster_url`, `trailer_url`, `release_date`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Chainsaw Man - The Movie: Reze Arc', 'Denji dan Power menghadapi musuh baru yang berbahaya dalam arc Reze yang penuh aksi dan drama.', 115, 'Action, Anime', 'R', 'images/poster_csm.jpg', 'https://www.youtube.com/watch?v=tAzAhDNdehs&t=1s', '2025-10-15', 'now_playing', '2025-10-29 12:45:59', '2026-01-04 16:06:04'),
+(2, 'The Verdict', 'Seorang pengacara muda berjuang untuk mengungkap kebenaran di balik kasus pembunuhan yang rumit.', 130, 'Drama, Thriller', 'PG-13', 'images/poster_keadilan.jpg', NULL, '2025-11-05', 'coming_soon', '2025-10-29 12:45:59', '2025-10-29 14:05:37'),
+(3, 'Dune: Part Three', 'Petualangan epik Paul Atreides berlanjut dalam chapter final yang spektakuler.', 165, 'Sci-Fi, Adventure', 'PG-13', 'images/poster_dune.jpg', NULL, '2025-10-20', 'now_playing', '2025-10-29 12:45:59', '2025-10-29 15:25:17'),
+(4, 'The Last Guardian', 'Sebuah keluarga harus bertahan hidup saat dunia dilanda bencana apokaliptik.', 140, 'Action, Drama', 'R', 'images/poster_guardian.jpg', NULL, '2025-11-12', 'coming_soon', '2025-10-29 12:45:59', '2025-11-23 07:58:56'),
+(5, 'Jujutsu Kaisen 0', 'Violent misfortunes frequently occur around 16-year-old Yuuta Okkotsu, a timid victim of high school bullying. Yuuta is saddled with a monstrous curse, a power that dishes out brutal revenge against his bullies. Rika Orimoto, Yuuta\'s curse, is a shadow from his tragic childhood and a potentially lethal threat to anyone who dares wrong him.\r\n\r\nYuuta\'s unique situation catches the attention of Satoru Gojou, a powerful sorcerer who teaches at Tokyo Prefectural Jujutsu High School. Gojou sees immense potential in Yuuta, and he hopes to help the boy channel his deadly burden into a force for good. Yet Yuuta struggles to find his place among his talented classmates: the selectively mute Toge Inumaki, weapons expert Maki Zenin, and Panda.\r\n\r\nYuuta clumsily utilizes Rika on missions with the other first-year students, but the grisly aftermath of Rika\'s tremendous displays of power draws the interest of the calculating curse user Suguru Getou. As Getou strives to claim Rika\'s strength and use it to eliminate all non-jujutsu users from the world, Yuuta fights alongside his friends to stop the genocidal plot.', 104, 'Action, Fantasy', 'PG', 'images/poster_jjk0.jpg', NULL, '2022-01-10', 'now_playing', '2025-10-29 14:08:47', '2025-11-28 15:43:02'),
+(6, 'Your Name', 'Dua remaja saling bertukar tubuh dan terhubung oleh nasib.', 106, 'Romance, Drama', 'PG', 'images/poster_yourname.jpg', NULL, '2016-08-26', 'coming_soon', '2025-10-29 14:08:47', '2025-10-29 15:32:51'),
+(7, 'Suzume', 'Gadis SMA yang membantu menutup pintu antar dunia agar bencana tidak terjadi.', 121, 'Adventure, Fantasy', 'PG', 'images/poster_suzume.jpg', NULL, '2023-04-15', 'coming_soon', '2025-10-29 14:08:47', '2025-10-29 14:08:47'),
+(8, 'Demon Slayer: Mugen Train', 'Tanjiro dan teman-temannya menghadapi iblis kuat di dalam kereta misterius.', 117, 'Action, Fantasy', 'R', 'images/poster_kny_mugen.jpg', NULL, '2020-10-16', 'archived', '2025-10-29 14:08:47', '2025-10-29 14:08:47'),
+(9, 'One Piece Film: Red', 'Luffy dan kru Topi Jerami bertemu diva legendaris, Uta.', 115, 'Action, Adventure', 'PG', 'images/poster_op_red.jpg', NULL, '2022-08-06', 'now_playing', '2025-10-29 14:08:47', '2025-10-29 14:08:47'),
+(10, 'Weathering With You', 'Seorang anak laki-laki bertemu gadis yang dapat mengubah cuaca.', 112, 'Fantasy, Romance', 'PG', 'images/poster_weathering.jpg', NULL, '2019-07-19', 'coming_soon', '2025-10-29 14:08:47', '2025-10-29 15:45:13'),
+(11, 'Blue Lock - Episode Nagi', 'Nagi Seishiro berusaha mengungkap potensi terbesarnya dalam program Blue Lock.', 91, 'Sports, Drama', 'PG-13', 'images/poster_bl_nagi.jpg', NULL, '2024-06-01', 'coming_soon', '2025-10-29 14:08:47', '2025-10-29 14:08:47'),
+(12, 'The First Slam Dunk', 'Tim Shohoku berjuang dalam pertandingan penentuan melawan Sannoh.', 124, 'Sports, Drama', 'PG', 'images/poster_slamdunk.jpg', NULL, '2022-12-03', 'now_playing', '2025-10-29 14:08:47', '2025-10-29 14:08:47'),
+(13, 'Haikyuu!! The Dumpster Battle', 'Karasuno vs Nekoma dalam pertandingan yang sangat menentukan.', 95, 'Sports', 'PG', 'images/poster_haikyuu.jpg', NULL, '2024-02-16', 'now_playing', '2025-10-29 14:08:47', '2025-10-29 14:08:47'),
+(14, 'Spirited Away', 'Seorang gadis terjebak di dunia roh dan harus menemukan jalan pulang.', 125, 'Fantasy, Adventure', 'PG', 'images/poster_spiritedaway.jpg', NULL, '2001-07-20', 'archived', '2025-10-29 14:08:47', '2025-10-29 14:08:47'),
+(15, 'Perjalanan Pria Solo', 'Perjalanan Pria Solo dari publik jadi Presiden', 164, 'Drama, Comedy', 'R', 'images/IMG_0215.jpg', NULL, '2025-11-28', 'archived', '2025-11-21 11:28:40', '2025-11-21 12:21:07'),
+(16, 'Violet Evergarden Movie', 'Several years have passed since the end of The Great War. As the radio tower in Leidenschaftlich continues to be built, telephones will soon become more relevant, leading to a decline in demand for \"Auto Memory Dolls.\" Even so, Violet Evergarden continues to rise in fame after her constant success with writing letters. However, sometimes the one thing you long for is the one thing that does not appear.\r\n\r\nViolet Evergarden Movie follows Violet as she continues to comprehend the concept of emotion and the meaning of love. At the same time, she pursues a glimmer of hope that the man who once told her, \"I love you,\" may still be alive even after the many years that have passed.', 140, 'Drama, Romance', 'PG-13', 'images/poster_violet.jpg', NULL, '2020-09-18', 'now_playing', '2025-11-29 12:47:41', '2025-11-29 12:47:41'),
+(20, 'Avatar', 'A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.', 162, 'Action, Adventure, Fantasy, Sci-Fi', 'PG-13', 'images/avatar.jpg', 'https://youtu.be/5PSNL1qE6VY?si=mkJRfareWCfU688T', '2009-12-18', 'now_playing', '2026-01-04 16:24:46', '2026-01-04 16:24:46');
 
 -- --------------------------------------------------------
 
@@ -284,7 +406,7 @@ CREATE TABLE `schedules` (
   `available_seats` int NOT NULL,
   `status` enum('active','full','cancelled') DEFAULT 'active',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `schedules`
@@ -293,8 +415,14 @@ CREATE TABLE `schedules` (
 INSERT INTO `schedules` (`schedule_id`, `movie_id`, `hall_id`, `show_date`, `show_time`, `price`, `available_seats`, `status`, `created_at`) VALUES
 (580, 1, 4, '2025-11-15', '19:20:00', 60000.00, 118, 'active', '2025-11-15 08:14:50'),
 (581, 3, 4, '2025-11-21', '20:20:00', 60000.00, 152, 'active', '2025-11-21 11:11:54'),
-(582, 15, 4, '2025-11-21', '19:30:00', 700000.00, 96, 'active', '2025-11-21 11:31:53'),
-(583, 1, 3, '2025-11-23', '16:00:00', 80000.00, 79, 'active', '2025-11-23 07:32:42');
+(582, 15, 4, '2025-11-21', '19:30:00', 700000.00, 100, 'active', '2025-11-21 11:31:53'),
+(583, 1, 3, '2025-11-29', '16:00:00', 80000.00, 15, 'active', '2025-11-23 07:32:42'),
+(584, 9, 8, '2025-11-26', '20:20:00', 1000000.00, 87, 'active', '2025-11-26 12:41:57'),
+(585, 16, 3, '2025-11-29', '21:00:00', 100000.00, 120, 'active', '2025-11-29 12:48:15'),
+(587, 16, 5, '2025-11-29', '20:00:00', 120000.00, 93, 'active', '2025-11-29 12:49:03'),
+(588, 16, 1, '2025-11-29', '20:00:00', 120000.00, 100, 'active', '2025-11-29 12:49:22'),
+(589, 1, 2, '2026-01-04', '23:30:00', 500000.00, 80, 'active', '2026-01-04 16:06:43'),
+(591, 20, 6, '2026-01-05', '12:10:00', 700000.00, 72, 'active', '2026-01-04 16:25:46');
 
 -- --------------------------------------------------------
 
@@ -308,7 +436,7 @@ CREATE TABLE `seats` (
   `seat_row` varchar(5) NOT NULL,
   `seat_number` int NOT NULL,
   `seat_type` enum('regular','vip','premium') DEFAULT 'regular'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `seats`
@@ -1109,7 +1237,7 @@ CREATE TABLE `theaters` (
   `city` varchar(100) NOT NULL,
   `address` text,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `theaters`
@@ -1136,7 +1264,7 @@ CREATE TABLE `users` (
   `role` enum('customer','admin') DEFAULT 'customer',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
@@ -1149,7 +1277,11 @@ INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `full_name`, `p
 (4, 'Rennn', 'coba@gmail.com', '$2y$10$/.976QWyA/d9cXfdN2GhEu7ctyTmaU9iqbrtrh0hTKfuZtymQS0fe', 'Rendi', '09109238293', 'customer', '2025-10-31 10:12:46', '2025-10-31 10:12:46'),
 (5, 'Ren', 'gatau@gmail.com', '$2y$10$OhMoDBmXiVVQKqsWcPihsu1mVuFc2pIiEHMQ19DSPqRE31BGrLiuS', 'Rendi gg', '08319264985', 'customer', '2025-11-21 11:08:37', '2025-11-21 11:08:37'),
 (6, 'Igna', 'robertcorneleio56@gmail.com', '$2y$10$1LhVeMG1dA02PJmhOGFt9eA.CtMSxjnjWXRc7Cde6HJ9OYdb5XPJi', 'Ignatius', '085608128185', 'customer', '2025-11-21 11:16:07', '2025-11-21 11:16:07'),
-(7, 'PandaJack', 'example@email.com', '$2y$10$DivUYbpxR2DMM9cDRwM3PeA9GO1sGIqNEvRFIE14Jz.5mCDeICukO', 'PandaJack', '08123456789', 'customer', '2025-11-21 14:53:10', '2025-11-21 14:53:10');
+(7, 'PandaJack', 'example@email.com', '$2y$10$DivUYbpxR2DMM9cDRwM3PeA9GO1sGIqNEvRFIE14Jz.5mCDeICukO', 'PandaJack', '08123456789', 'customer', '2025-11-21 14:53:10', '2025-11-21 14:53:10'),
+(8, 'Rendi', 'richard20gons@gmail.com', '$2y$10$oWnhysgaL7H3Bmp.NEEVd.DCHoEBp9DZs43j6xFf9dKLmIjcguK1S', 'Richard Edgar Gonassis', '088217450399', 'customer', '2025-11-29 00:05:22', '2025-11-29 00:05:22'),
+(9, 'abc', 'abc@gmail.com', '$2y$10$KAKWhfLsm5BL7Yzpb4N5kujPuFumejmPcu5dVO2d.MKw8pYOufInC', 'J', '1111111111', 'customer', '2025-11-29 12:16:06', '2025-11-29 12:16:06'),
+(10, 'tester', 'tester@gmail.com', '$2y$10$SPO9sZNDy6rN0IIVrGvU3ehJwe5CepdtnmjYq80yS8uky6AJZKf52', 'richard', '08123455677', 'customer', '2026-01-04 16:08:11', '2026-01-04 16:08:11'),
+(11, 'tes12', 'tes12@gmail.com', '$2y$10$6cH4p3NG0J3qhSWqOk1D0OI5MBTjiD.8LbqAuG8RW3eyFkgmM735G', 'tes12', '081234567890', 'customer', '2026-01-04 16:23:23', '2026-01-04 16:23:23');
 
 --
 -- Indexes for dumped tables
@@ -1222,13 +1354,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `booking_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `booking_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `booking_seats`
 --
 ALTER TABLE `booking_seats`
-  MODIFY `booking_seat_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+  MODIFY `booking_seat_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=249;
 
 --
 -- AUTO_INCREMENT for table `halls`
@@ -1240,13 +1372,13 @@ ALTER TABLE `halls`
 -- AUTO_INCREMENT for table `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `movie_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `movie_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-  MODIFY `schedule_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=584;
+  MODIFY `schedule_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=592;
 
 --
 -- AUTO_INCREMENT for table `seats`
@@ -1264,7 +1396,7 @@ ALTER TABLE `theaters`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables

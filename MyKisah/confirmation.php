@@ -378,4 +378,4 @@ while ($seat = $seats_result->fetch_assoc()) {
     </div>
 
 </body>
-</html>
+</html> 
